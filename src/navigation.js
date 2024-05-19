@@ -20,7 +20,7 @@ export const headerData = {
       href: getPermalink('/contact'),
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: '(514) 718-8772', href: 'tel:1-514-718-8772', target: '_self' }],
 };
 
 export const footerData = {
