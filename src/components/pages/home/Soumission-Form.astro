@@ -1,0 +1,40 @@
+---
+import FormContainer from './Form-Container.astro';
+import type { Contact as Props } from '~/types';
+
+---
+
+
+  <div class="flex flex-col max-w-xl mx-auto rounded-lg backdrop-blur border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow p-4 sm:p-6 lg:p-8 w-full">
+    <FormContainer
+      inputs={[
+        { label: 'VOTRE NOM', type: 'text', name: 'name', placeholder: 'Entrez votre nom', required: true },
+        { label: 'VOTRE COURRIEL', type: 'email', name: 'email', placeholder: 'Entrez votre courriel', required: true },
+        { label: 'VOTRE TÉLÉPHONE', type: 'tel', name: 'phone', placeholder: 'Entrez votre téléphone', required: true },
+        {
+          label: 'VOTRE SECTEUR',
+          type: 'select',
+          name: 'sector',
+          options: [
+            { value: '', label: '—Veuillez choisir une option—' },
+            { value: 'BUREAUX PROFESSIONNELS', label: 'BUREAUX PROFESSIONNELS' },
+            { value: 'COMMERCES AUX DÉTAILS', label: 'COMMERCES AUX DÉTAILS' },
+            { value: 'CENTRES INSTITUTIONNELS', label: 'CENTRES INSTITUTIONNELS' },
+            { value: 'SECTEUR ÉDUCATIONNEL', label: 'SECTEUR ÉDUCATIONNEL' },
+            { value: 'APRÈS CONSTRUCTION', label: 'APRÈS CONSTRUCTION' },
+            { value: 'ENTRETIEN DES IMMEUBLES À CONDOS', label: 'ENTRETIEN DES IMMEUBLES À CONDOS' },
+          ],
+          required: true,
+        },
+      ]}
+      textarea={{
+        label: 'VOTRE MESSAGE',
+        name: 'message',
+        placeholder: 'Entrez votre message',
+        required: true,
+      }}
+      disclaimer="Nous respectons votre vie privée et nous engageons à protéger vos informations personnelles."
+      button={{ text: 'Envoyer', type: 'submit', variant: 'primary'}}
+      description="OBTENEZ UNE SOUMISSION GRATUITE!"
+    />
+  </div>
