@@ -7,17 +7,14 @@ export const headerData = {
       href: getPermalink('/'),
     },
     {
-      text: 'Services',
-      links: [
-        { text: 'Building', href: '#' },
-        { text: 'Commercial', href: '#' },
-        { text: 'Carpet Cleaning', href: '#' },
-      ],
-    },
-    {
       text: 'About',
       href: getPermalink('/about'),
     },
+    {
+      text: 'Services',
+      href: getPermalink('/services'),
+    },
+
     {
       text: 'Contact',
       href: getPermalink('/contact'),

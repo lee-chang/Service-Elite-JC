@@ -12,6 +12,8 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
+import BannerForm from '~/components/pages/home/Banner-Form.astro';
+
 const metadata = {
   title: 'Elite Service JC — Housekeeping',
   ignoreTitleTemplate: true,
@@ -20,31 +22,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
-
-  <Hero
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Ask for Quote',
-        href: '#',
-      },
-      { text: 'Our Services', href: '#features' },
-    ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
-  >
-    <Fragment slot="title">
-      Lorem Ipsum <span class="hidden xl:inline"> adsfdgdsdafsv</span>
-      <span class="text-accent dark:text-white highlight"> Housekeeping</span>
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">JC Elite Service</span> is a Building & commercial cleaning, a clean space for all your needs.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">Lorem Ipsum.</span>
-      Building & commercial cleaning, a clean space for all your needs.
-    </Fragment>
-  </Hero>
+  <BannerForm />
 
   <!-- Note Widget ******************* -->
 

@@ -1,0 +1,63 @@
+---
+import Button from "~/components/ui/Button.astro";
+
+const { inputs = [], textarea, disclaimer, button, description } = Astro.props;
+---
+
+<div class="space-y-4">
+  {description && <p class="text-xl font-bold text-gray-600 dark:text-gray-300">{description}</p>}
+  
+  <form class="space-y-4">
+    {inputs.map(input => (
+      <div class="flex flex-col">
+        <label for={input.name} class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">
+          {input.label}
+        </label>
+        {input.type === 'select' ? (
+          <select
+            id={input.name}
+            name={input.name}
+            required={input.required}
+            class="border border-gray-300 dark:border-gray-700 rounded-md p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200"
+          >
+            {input.options.map(option => (
+              <option value={option.value}>{option.label}</option>
+            ))}
+          </select>
+        ) : (
+          <input
+            id={input.name}
+            type={input.type}
+            name={input.name}
+            placeholder={input.placeholder}
+            required={input.required}
+            class="border border-gray-300 dark:border-gray-700 rounded-md p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200"
+          />
+        )}
+      </div>
+    ))}
+
+    {textarea && (
+      <div class="flex flex-col">
+        <label for={textarea.name} class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">
+          {textarea.label}
+        </label>
+        <textarea
+          id={textarea.name}
+          name={textarea.name}
+          placeholder={textarea.placeholder}
+          required={textarea.required}
+          class="border border-gray-300 dark:border-gray-700 rounded-md p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 h-16"
+        ></textarea>
+      </div>
+    )}
+
+    {disclaimer && <p class="text-xs text-gray-500 dark:text-gray-400">{disclaimer}</p>}
+    <div class="flex w-full sm:w-auto">
+      <Button class="w-full sm:mb-0" type={button.type} variant={button.variant}>
+        {button.text}
+      </Button>
+    </div>
+
+  </form>
+</div>
