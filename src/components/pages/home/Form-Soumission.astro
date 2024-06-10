@@ -1,0 +1,104 @@
+---
+import Button from '~/components/ui/Button.astro';
+import emailjs from '@emailjs/browser';
+
+const { inputs = [], textarea, disclaimer, button, description } = Astro.props;
+
+---
+
+<div class="space-y-4">
+  {description && <p class="text-xl font-bold text-gray-600 dark:text-gray-300">{description}</p>}
+
+  <form id="form" class="space-y-4">
+    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+
+    {
+      inputs.map((input) => (
+        <div class="flex flex-col">
+          <label for={input.name} class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">
+            {input.label}
+          </label>
+          {input.type === 'select' ? (
+            <select
+              id={input.name}
+              name={input.name}
+              required={input.required}
+              class="border border-gray-300 dark:border-gray-700 rounded-md p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200"
+            >
+              {input.options.map((option) => (
+                <option value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          ) : (
+            <input
+              id={input.name}
+              type={input.type}
+              name={input.name}
+              placeholder={input.placeholder}
+              required={input.required}
+              class="border border-gray-300 dark:border-gray-700 rounded-md p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200"
+            />
+          )}
+        </div>
+      ))
+    }
+
+    {
+      textarea && (
+        <div class="flex flex-col">
+          <label for={textarea.name} class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">
+            {textarea.label}
+          </label>
+          <textarea
+            id={textarea.name}
+            name={textarea.name}
+            placeholder={textarea.placeholder}
+            required={textarea.required}
+            class="border border-gray-300 dark:border-gray-700 rounded-md p-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 h-16"
+          />
+        </div>
+      )
+    }
+
+    {disclaimer && <p class="text-xs text-gray-500 dark:text-gray-400">{disclaimer}</p>}
+    <div class="flex w-full sm:w-auto">
+      <Button class="w-full sm:mb-0" type={button.type} variant={button.variant}>
+        {button.text}
+      </Button>
+    </div>
+  </form>
+</div>
+<script type="module">
+  import emailjs from 'https://cdn.skypack.dev/@emailjs/browser';
+
+  const form = document.getElementById('form');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const templateParams = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    sector: form.sector.value,
+    message: form.message.value,
+    topic: "Supplier Form Submission - JC Form Supplier",
+  };
+
+    emailjs
+      .send('emyapre correo', 'jc_form_supplier', templateParams, {
+        publicKey: 'WG0IiGqh3OfbS9Ex7',
+      })
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          alert('Form submitted successfully!');
+        },
+        (error) => {
+          console.log('FAILED...', error);
+          alert('Failed to submit the form. Please try again later.');
+        }
+      );
+  });
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
