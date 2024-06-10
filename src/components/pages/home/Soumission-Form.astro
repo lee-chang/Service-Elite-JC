@@ -1,12 +1,12 @@
 ---
-import FormContainer from './Form-Container.astro';
+import FormContainerSoumission from './Form-Soumission.astro';
 import type { Contact as Props } from '~/types';
 
 ---
 
 
   <div class="flex flex-col max-w-xl mx-auto rounded-lg backdrop-blur border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow p-4 sm:p-6 lg:p-8 w-full">
-    <FormContainer
+    <FormContainerSoumission
       inputs={[
         { label: 'VOTRE NOM', type: 'text', name: 'name', placeholder: 'Entrez votre nom', required: true },
         { label: 'VOTRE COURRIEL', type: 'email', name: 'email', placeholder: 'Entrez votre courriel', required: true },
@@ -36,5 +36,6 @@ import type { Contact as Props } from '~/types';
       disclaimer="Nous respectons votre vie privée et nous engageons à protéger vos informations personnelles."
       button={{ text: 'Envoyer', type: 'submit', variant: 'primary'}}
       description="OBTENEZ UNE SOUMISSION GRATUITE!"
+      
     />
   </div>
