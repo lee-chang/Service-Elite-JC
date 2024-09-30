@@ -14,6 +14,10 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import BannerForm from '~/components/pages/home/Banner-Form.astro';
 import SliderServices from '~/components/pages/home/SliderServices.astro';
 
+
+// images 
+import ResidencesInmobilieres from '~/assets/images/ReSIDENCES-INMOBILIeRES.png';
+
 const metadata = {
   title: 'Elite Service JC — Housekeeping',
   ignoreTitleTemplate: true,
@@ -61,13 +65,13 @@ const metadata = {
         icon: 'tabler:rocket',
       },
       {
-        title: 'DURABILITÉ',
+        title: 'BIODÉGRADABLES',
         description:
           'Un de nos fondements qui entoure notre éthique dans l’entreprise est d’ajouter de la valeur à notre société. On travaille pour promouvoir le respect de notre équipe envers la société et l’environnement avec l’utilisation des produits non-chimiques.',
         icon: 'tabler:arrows-right-left',
       },
       {
-        title: 'OINTÉGRITÉ',
+        title: 'INTÉGRITÉ',
         description:
           'La transparence et l’intégrité sont des principes essentiels dans notre communication avec nos clients. Nous nous engageons à offrir des prix raisonnables et compétitifs, accessibles pour vous.',
         icon: 'tabler:bulb',
@@ -85,6 +89,7 @@ const metadata = {
       {
         title: 'RÉSIDENCES INMOBILIÈRES',
         icon: 'flat-color-icons:template',
+        imgSrc: ResidencesInmobilieres
       },
       {
         title: 'RÉSIDENCES D’AÎNÉS',

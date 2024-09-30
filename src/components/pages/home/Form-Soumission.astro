@@ -3,7 +3,6 @@ import Button from '~/components/ui/Button.astro';
 import emailjs from '@emailjs/browser';
 
 const { inputs = [], textarea, disclaimer, button, description } = Astro.props;
-
 ---
 
 <div class="space-y-4">
@@ -62,28 +61,53 @@ const { inputs = [], textarea, disclaimer, button, description } = Astro.props;
 
     {disclaimer && <p class="text-xs text-gray-500 dark:text-gray-400">{disclaimer}</p>}
     <div class="flex w-full sm:w-auto">
-      <Button class="w-full sm:mb-0" type={button.type} variant={button.variant}>
+      <Button id="submit-button" class="w-full sm:mb-0" type={button.type} variant={button.variant}>
         {button.text}
       </Button>
     </div>
   </form>
+
+  <!-- Spinner que estará oculto inicialmente -->
+  <div id="spinner" class="hidden flex items-center justify-center space-x-2">
+    <span class="loader"></span> Enviando...
+  </div>
+
+  <!-- Mensaje de éxito que estará oculto inicialmente -->
+  <div id="success-message" class="hidden text-lg text-green-600 dark:text-green-400 text-center">
+    ¡Correo enviado exitosamente!
+  </div>
+
+  <!-- Botón para enviar otro correo -->
+  <div id="new-submission" class="hidden text-center">
+    <Button id="new-email-button" class="w-full sm:mb-0"> Enviar otro correo </Button>
+  </div>
 </div>
 <script type="module">
   import emailjs from 'https://cdn.skypack.dev/@emailjs/browser';
 
   const form = document.getElementById('form');
 
+  const submitButton = document.getElementById('submit-button'); // Ahora se encuentra correctamente
+  const spinner = document.getElementById('spinner');
+  const successMessage = document.getElementById('success-message');
+  const newSubmission = document.getElementById('new-submission');
+  const newEmailButton = document.getElementById('new-email-button');
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    // Mostrar el spinner y deshabilitar el botón de envío
+    spinner.classList.remove('hidden');
+    submitButton.disabled = true;
+
     const templateParams = {
-    name: form.name.value,
-    email: form.email.value,
-    phone: form.phone.value,
-    sector: form.sector.value,
-    message: form.message.value,
-    topic: "Supplier Form Submission - JC Form Supplier",
-  };
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      sector: form.sector.value,
+      message: form.message.value,
+      topic: 'Supplier Form Submission - JC Form Soumission',
+    };
 
     emailjs
       .send('emyapre correo', 'jc_form_supplier', templateParams, {
@@ -92,13 +116,49 @@ const { inputs = [], textarea, disclaimer, button, description } = Astro.props;
       .then(
         (response) => {
           console.log('SUCCESS!', response.status, response.text);
-          alert('Form submitted successfully!');
+
+          // Ocultar el spinner y mostrar el mensaje de éxito
+          form.classList.add('hidden');
+          spinner.classList.add('hidden');
+          successMessage.classList.remove('hidden');
+          newSubmission.classList.remove('hidden');
         },
         (error) => {
           console.log('FAILED...', error);
-          alert('Failed to submit the form. Please try again later.');
+          alert('Error al enviar el formulario. Inténtalo de nuevo.');
+          spinner.classList.add('hidden');
+          submitButton.disabled = false;
         }
       );
   });
+
+  // Función para enviar otro correo
+  newEmailButton.addEventListener('click', function () {
+    successMessage.classList.add('hidden');
+    newSubmission.classList.add('hidden');
+    form.classList.remove('hidden');
+    submitButton.disabled = false;
+    form.reset();
+  });
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+  .loader {
+    border: 2px solid #f3f3f3; /* Gris claro */
+    border-top: 2px solid #3498db; /* Azul */
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 2s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
