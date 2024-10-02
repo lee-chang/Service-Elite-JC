@@ -49,6 +49,11 @@ export interface Taxonomy {
   title: string;
 }
 
+export interface Carousel {
+  items?: Array<Item>;
+  classes?: Record<string, string>;
+}
+
 export interface MetaData {
   title?: string;
   ignoreTitleTemplate?: boolean;

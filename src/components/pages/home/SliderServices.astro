@@ -3,6 +3,7 @@ import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import Headline from '~/components/ui/Headline.astro';
 import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
 import type { Features as Props } from '~/types';
+import ImageCarousel from '~/components/widgets/ImageCarousel.astro';
 
 const {
   title = await Astro.slots.render('title'),
@@ -35,4 +36,6 @@ const {
       ...((classes?.items as {}) ?? {}),
     }}
   />
+
+  <!-- <ImageCarousel items={items }/> -->
 </WidgetWrapper>

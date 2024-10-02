@@ -46,14 +46,18 @@ const {
         };
         return (
           <div class={twMerge('relative flex flex-col', panelClass, itemClasses?.panel)}>
-            {typeof imgObj === 'string' ? (
-              <Fragment set:html={imgObj} />
-            ) : (
-              <Image class="mx-auto mb-2 rounded-md w-full" loading="eager" width={450} height={450} {...imgObj} />
+            {imgSrc && (
+              <Image
+                class="mx-auto mb-2 rounded-md w-full object-cover"
+                loading="lazy"
+                width={400}
+                height={300}
+                {...imgObj}
+              />
             )}
-            {/* {(icon || defaultIcon) && (
+            {(icon || defaultIcon) && (
               <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
-            )} */}
+            )}
             <div class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</div>
             {description && (
               <p
