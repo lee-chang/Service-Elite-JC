@@ -1,4 +1,5 @@
 ---
+
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
@@ -10,24 +11,24 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+  <!-- Widget HeroText ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText tagline="Contact" title="Connectons-nous!" />
 
   <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="Envoyez-nous un message dès aujourd'hui!"
+    subtitle="Pour des réponses plus rapides, explorez notre section FAQ. Vous y trouverez peut-être la solution que vous cherchez! Sinon, notre équipe de support se fera un plaisir de vous aider."
     inputs={[
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
+        label: 'Nom',
       },
       {
         type: 'email',
         name: 'email',
-        label: 'Email',
+        label: 'E-mail',
       },
     ]}
     textarea={{
@@ -35,43 +36,43 @@ const metadata = {
     }}
     disclaimer={{
       label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+        'En soumettant ce formulaire de contact, vous reconnaissez et acceptez la collecte de vos informations personnelles.',
     }}
-    description="Our support team typically responds within 24 business hours."
+    description="Notre équipe de support répond généralement dans les 24 heures ouvrables."
   />
 
-  <!-- Features2 Widget ************** -->
+  <!-- Widget Features2 ************** -->
 
   <Features2
-    title="We are here to help!"
+    title="Nous sommes là pour vous aider!"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: 'Support général',
+        description: `Discutez avec nous pour des questions relatives à la gestion de compte, à la navigation sur le site, aux problèmes de paiement, à l'accès aux modèles achetés ou aux questions générales sur le fonctionnement du site.`,
       },
       {
-        title: 'Contact sales',
+        title: 'Contactez les ventes',
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          'Discutez avec nous pour des questions sur les achats, les options de personnalisation, les licences pour une utilisation commerciale, les questions sur des modèles spécifiques, etc.',
       },
       {
-        title: 'Technical support',
+        title: 'Support technique',
         description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+          "Discutez avec nous en cas de problèmes comme l'installation de modèles, des difficultés d'édition, des problèmes de compatibilité avec des logiciels ou des erreurs de téléchargement, ou d’autres défis techniques liés à l'utilisation des modèles.",
       },
       {
-        title: 'Phone',
+        title: 'Téléphone',
         description: '(514) 718-8772',
         icon: 'tabler:headset',
       },
       {
-        title: 'Email',
+        title: 'E-mail',
         description: 'info@serviceelitejc.ca',
         icon: 'tabler:mail',
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
+        title: 'Emplacement',
+        description: 'bientôt disponible',
         icon: 'tabler:map-pin',
       },
     ]}

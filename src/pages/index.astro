@@ -14,9 +14,13 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import BannerForm from '~/components/pages/home/Banner-Form.astro';
 import SliderServices from '~/components/pages/home/SliderServices.astro';
 
-
-// images 
+// images
 import ResidencesInmobilieres from '~/assets/images/ReSIDENCES-INMOBILIeRES.png';
+import ResidenceDaines from '~/assets/images/ReSIDENCES-DaiNeS.png'
+import BureauxProfesionalesfrom from '~/assets/images/BUREAUX-PROFESSIONNELS.jpg';
+import CentreDeSante from '~/assets/images/CENTRE-DE-SANTE.jpg';
+import EcolesImage from '~/assets/images/school-cleaning-services.webp';
+import CommerciauxImage from '~/assets/images/locaux-commerciaux.webp';
 
 const metadata = {
   title: 'Elite Service JC — Housekeeping',
@@ -88,30 +92,30 @@ const metadata = {
     items={[
       {
         title: 'RÉSIDENCES INMOBILIÈRES',
-        icon: 'flat-color-icons:template',
-        imgSrc: ResidencesInmobilieres
+        imgSrc: ResidencesInmobilieres,
       },
       {
         title: 'RÉSIDENCES D’AÎNÉS',
-        icon: 'flat-color-icons:gallery',
+        imgSrc: ResidenceDaines,
       },
       {
         title: 'BUREAUX PROFESSIONNELS',
-        icon: 'flat-color-icons:approval',
+        imgSrc: BureauxProfesionalesfrom,
       },
       {
         title: 'CENTRE DE SANTÉ',
-        icon: 'flat-color-icons:document',
+        imgSrc: CentreDeSante,
       },
       {
         title: 'GARDERIES/ÉCOLES/CPE',
-        icon: 'flat-color-icons:advertising',
+        imgSrc: EcolesImage,
       },
       {
         title: 'LOCAUX COMMERCIAUX',
-        icon: 'flat-color-icons:currency-exchange',
+        imgSrc: CommerciauxImage,
       },
     ]}
+    columns={3}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -380,14 +384,14 @@ const metadata = {
 
   <!-- Stats Widget ****************** -->
 
-  <Stats
+  <!-- <Stats
     stats={[
       { title: 'Clients satisfaits', amount: '500+' },
       { title: "Années d'expérience", amount: '15' },
       { title: 'Projets complétés', amount: '1K+' },
       { title: 'Équipe', amount: '50+' },
     ]}
-  />
+  /> -->
 
   <!-- CallToAction Widget *********** -->
 
@@ -395,10 +399,10 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Soumission gratuite',
-        href: 'mailto:info@jcservice.com',
-        target: '_blank',
-        icon: 'tabler:download',
+        text: 'Demandez une soumission',
+        href: '#',
+        target: '_self',
+        icon: 'tabler:file-pencil',
       },
     ]}
   >
